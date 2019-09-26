@@ -1,0 +1,34 @@
+# Use tester/tester as user/password credentials
+version: '2'
+
+services:
+
+  app:
+    build:
+      context: ..
+      dockerfile: ./docker/app/Dockerfile
+    ports:
+        - "80:80"
+        - "5000:5000"
+    volumes:
+      - ../app:/var/www/html/
+
+  postgres:
+    image: postgres:latest
+    networks:
+      code-network:
+        aliases:
+          - postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: tester
+      POSTGRES_USERNAME: tester
+    ports:
+      - 3308:3308
+#
+#volumes:
+#  ..:
+
+networks:
+  code-network:
+    driver: bridge

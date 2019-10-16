@@ -7,7 +7,7 @@ RUN apt-get update --fix-missing && apt-get install -y software-properties-commo
 RUN pip3 install flask
 RUN pip3 install flask-restful
 RUN pip3 install ConfigParser
-
+RUN pip3 install https://github.com/mitsuhiko/flask/tarball/master
 # Enables Apache2 module required for serving API
 RUN a2enmod wsgi
 

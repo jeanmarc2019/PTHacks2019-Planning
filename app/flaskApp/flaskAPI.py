@@ -10,6 +10,8 @@ cur_dir = os.path.join(os.path.dirname(__file__), db_name)
 db_uri = 'sqlite:///{}'.format(cur_dir)
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
 cfg = Configuration(debug=True)
 db = SQLAlchemy(app)

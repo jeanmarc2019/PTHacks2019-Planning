@@ -8,6 +8,14 @@ app = Flask(__name__)
 api = Api(app)
 cfg = Configuration(debug=True)
 
+# Dummy data
+CARDS = [
+            {'id': 0,'name': '0', 'address': 'asdf', 'img': "", 'tags': [], 'costarHtml': "", 'costarCreated': 0, 'costarScore': 0, 'reference': [], 'score': "", 'price': 0},
+            {'id': 1,'name': '1', 'address': 'qwer', 'img': "", 'tags': [], 'costarHtml': "", 'costarCreated': 0, 'costarScore': 0, 'reference': [], 'score': "", 'price': 0},
+            {'id': 2,'name': '2', 'address': 'zxcv', 'img': "", 'tags': [], 'costarHtml': "", 'costarCreated': 0, 'costarScore': 0, 'reference': [], 'score': "", 'price': 0},
+            {'id': 3,'name': '3', 'address': 'jkl;', 'img': "", 'tags': [], 'costarHtml': "", 'costarCreated': 0, 'costarScore': 0, 'reference': [], 'score': "", 'price': 0}
+        ]
+
 parser = reqparse.RequestParser()
 parser.add_argument('id')
 
@@ -28,8 +36,7 @@ def test_page():
     data = pandas.read_csv("database_outline.csv")
     data = data.to_dict('record')
     print(data)
-    return render_template('swiping.html', data=data)
-
+    return render_template('swiping.html', cards=CARDS)
 
 
 

@@ -1,12 +1,18 @@
 from flask import Flask, render_template, jsonify, request
 from flask_restful import reqparse, Resource, Api
+from flask_sqlalchemy import SQLAlchemy
 from config import Configuration
 
-import pandas
+import pandas, os
+
+db_name = 'app.db'
+cur_dir = os.path.join(os.path.dirname(__file__), db_name)
+db_uri = 'sqlite:///{}'.format(cur_dir)
 
 app = Flask(__name__)
 api = Api(app)
 cfg = Configuration(debug=True)
+db = SQLAlchemy(app)
 
 parser = reqparse.RequestParser()
 parser.add_argument('id')
@@ -41,10 +47,9 @@ def sentiment_analysis():
         year = request.form['year']
         keyword = request.form['keyword']
 
-
-
     return 0
 
 
 if __name__ == '__main__':
+    db.create_all()
     app.run(host=cfg.host,port=cfg.port,debug=cfg.debug)

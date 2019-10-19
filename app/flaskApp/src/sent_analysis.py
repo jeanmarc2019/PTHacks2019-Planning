@@ -7,8 +7,8 @@ from nltk.corpus import stopwords
 import re
 import numpy
 
-#nltk.download('wordnet') 
-#nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('stopwords')
 
 def sentAnalysis(dataset):
     pos_sent = []

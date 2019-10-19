@@ -24,6 +24,16 @@ $(document).ready(function() {
 
     if (pullDeltaX >= decisionVal) {
       $card.addClass("to-right");
+      $.post({
+        url: window.origin + "/like",
+        data: {
+            "id": $card[0].firstElementChild.getAttribute("id")
+        },
+        cache: false,
+        success: function(result){
+            console.log(result)
+        }
+      });
     } else if (pullDeltaX <= -decisionVal) {
       $card.addClass("to-left");
     }

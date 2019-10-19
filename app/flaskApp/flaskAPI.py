@@ -30,8 +30,10 @@ def test_page():
     print(data)
     return render_template('swiping.html', data=data)
 
-
-
+@app.route("/analysis")
+def sentiment_analysis():
+    
+    return 0
 
 
 if __name__ == '__main__':

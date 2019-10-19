@@ -30,9 +30,19 @@ def test_page():
     print(data)
     return render_template('swiping.html', data=data)
 
-@app.route("/analysis")
+@app.route("/analysis", methods = ['POST', 'GET'])
 def sentiment_analysis():
-    
+
+    if request.method == 'GET':
+        return(render_template('search.html'))
+    elif request.method == 'POST':
+        city = request.form['city']
+        state = request.form['state']
+        year = request.form['year']
+        keyword = request.form['keyword']
+
+
+
     return 0
 
 

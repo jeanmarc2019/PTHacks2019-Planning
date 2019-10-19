@@ -4,6 +4,10 @@ MAINTAINER Jean-Marc Daviau-Williams
 
 # Python/Flask stuff
 RUN apt-get update --fix-missing && apt-get install -y software-properties-common python3 python3-pip apache2 libapache2-mod-wsgi && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN pip3 install pandas==0.23
+RUN pip3 install newspaper3k
+RUN pip3 install nltk
+RUN pip3 install textblob
 RUN pip3 install flask
 RUN pip3 install flask-restful
 RUN pip3 install ConfigParser

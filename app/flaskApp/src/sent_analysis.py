@@ -58,6 +58,7 @@ def keywords(dataset):
         
         text=re.sub("&lt;/?.*?&gt;"," &lt;&gt; ",text)
         text=re.sub("(\\d|\\W)+"," ",text)
+        print(text)
         text = text.split()
         
         ps=PorterStemmer()
@@ -75,3 +76,4 @@ def keywords(dataset):
 
 dataset = pandas.read_csv('data.csv')
 
+keywords(dataset)

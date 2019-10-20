@@ -8,6 +8,7 @@ import csv
 import pandas as pd
 import pandas, os
 import us
+from src.sentAnalysis import sentAnalysis
 
 db_name = 'app.db'
 cur_dir = os.path.join(os.path.dirname(__file__), db_name)
@@ -50,7 +51,7 @@ def getCardsFromFile(start, stop):
         temp["reference"] = []
         temp["score"] = []
         temp["price"] = 0.0
-        temp["costarScore"] = []
+        temp["costarScore"] = 0.0 #call sent anal here
         output.append(temp)
     return output
 

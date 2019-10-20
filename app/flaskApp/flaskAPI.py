@@ -7,6 +7,7 @@ from mysql.connector import MySQLConnection, Error
 import csv
 import pandas as pd
 import pandas, os
+import us
 
 db_name = 'app.db'
 cur_dir = os.path.join(os.path.dirname(__file__), db_name)
@@ -22,6 +23,7 @@ start = 0
 stop = 25
 
 coStarData = pandas.read_csv('data.csv')
+statePics = pandas.read_csv('statePicRelation.csv')
 def getCardsFromFile(start, stop):
     output = []
     for i in range(start, stop):
@@ -37,8 +39,13 @@ def getCardsFromFile(start, stop):
         else:
             address = "Great Britain"
         temp["address"] = address
+        img = "https://ahprd4cdn.csgpimgs.com/si2/JSZDDQlWHJFVRppsEo8-96vv-i7BIxrHlI6DXR1rDbJHIaY2fH8eJ1pCo-tus7zMoynmCfuUTvE9JAn705adpt6KOH3c7z_ppJqguUo2spM/1/image.jpg"
+        # for j in range(len(list(coStarData["Title"][i]).split())):
+        #     for k in range(len(us.states.STATES)):
+        #         if coStarData["Title"][i].split()[j] == us.states.lookup(str(k)):
+        #             img = statePics["pic"][list(statePics['state'][j]).index()]
         # Create later
-        temp["img"] = ""
+        temp["img"] = img # placeholder image
         temp["tags"] = []
         temp["reference"] = []
         temp["score"] = []
@@ -59,7 +66,7 @@ class testEndpoint(Resource):
 class likeListing(Resource):
     def post(self):
         args = parser.parse_args()
-        print(getCardsFromFile(start, stop)[0]['id'])
+        # print(getCardsFromFile(start, stop)[0]['id'])
         return {'id': args['id']}
 
 api.add_resource(testEndpoint, '/')
@@ -68,9 +75,6 @@ api.add_resource(likeListing, '/like')
 
 @app.route('/test')
 def test_page():
-    data = pandas.read_csv("database_outline.csv")
-    data = data.to_dict('record')
-    print(data)
     return render_template('swiping.html', cards=CARDS)
 
 @app.route("/analysis", methods = ['POST', 'GET'])

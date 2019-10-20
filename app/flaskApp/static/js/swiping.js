@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   var animating = false;
   var cardsCounter = 0;
-  var numOfCards = 6;
+  var numOfCards = 25;
   var decisionVal = 80;
   var pullDeltaX = 0;
   var deg = 0;
@@ -27,7 +27,7 @@ $(document).ready(function() {
       $.post({
         url: window.origin + "/like",
         data: {
-            "id": $card[0].firstElementChild.getAttribute("id")
+            "id": $card[0].getAttribute("id")
         },
         cache: false,
         success: function(result){
@@ -63,6 +63,20 @@ $(document).ready(function() {
       animating = false;
     }, 300);
   };
+    var opt = {
+            autoOpen: false,
+            modal: true,
+            width: 550,
+            height:650,
+            title: 'Article'
+    };
+
+  $(".demo__card").on("click", function(e) {
+    if (Number($cardReject.css("opacity")) === 0
+     && Number($cardLike.css("opacity")) === 0) {
+     $('#dialog_' + e.currentTarget.getAttribute('id').toString()).dialog({modal:true});
+    }
+  })
 
   $(document).on("mousedown touchstart", ".demo__card:not(.inactive)", function(e) {
     if (animating) return;

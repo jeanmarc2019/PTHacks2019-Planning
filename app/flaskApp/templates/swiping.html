@@ -4,13 +4,17 @@
     <header class="demo__header"></header>
     <div class="demo__content">
         {% for card in cards %}
-        <div class="demo__card">
-            <div id="{{ card.id }}" class="demo__card__top purple">
-                <div class="demo__card__img"><img src="{{ card.img }}"/></div>
-                <p class="demo__card__name text-dark pt-5">{{ card.name }}</p>
+        <div id="{{ card.id }}" class="demo__card">
+            <div class="demo__card__top">
+                <img class="demo__card__img" src="{{ card.img }}"/>
             </div>
             <div class="demo__card__btm">
+                <p class="demo__card__name text-dark pt-5">{{ card.name }}</p>
                 <p class="demo__card__we">{{ card.address }}</p>
+                <p class="demo__card__open_dialog">Click anywhere for info</p>
+                <div class="dialog" id="dialog_{{ card.id }}">
+                    <div class="article">{{ card.costarHtml|safe }}</div>
+                </div>
             </div>
             <div class="demo__card__choice m--reject"></div>
             <div class="demo__card__choice m--like"></div>

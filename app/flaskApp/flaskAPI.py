@@ -47,7 +47,7 @@ def getCardsFromFile(start, stop):
         #             img = statePics["pic"][list(statePics['state'][j]).index()]
         # Create later
         
-        analysis = sentAnalysis(temp["costarHtml"])
+        analysis = sentAnalysis(coStarData["Body"][i])
         sentiment = analysis.analyze()
         
         temp["img"] = img # placeholder image

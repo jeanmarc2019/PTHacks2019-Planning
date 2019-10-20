@@ -46,12 +46,16 @@ def getCardsFromFile(start, stop):
         #         if coStarData["Title"][i].split()[j] == us.states.lookup(str(k)):
         #             img = statePics["pic"][list(statePics['state'][j]).index()]
         # Create later
+        
+        analysis = sentAnalysis(temp["costarHtml"])
+        sentiment = analysis.analyze()
+        
         temp["img"] = img # placeholder image
         temp["tags"] = []
         temp["reference"] = []
         temp["score"] = []
         temp["price"] = 0.0
-        temp["costarScore"] = 0.0 #call sent anal here
+        temp["costarScore"] = sentiment
         output.append(temp)
     return output
 

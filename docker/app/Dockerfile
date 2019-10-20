@@ -9,6 +9,7 @@ RUN pip3 install flask_SQLAlchemy
 RUN pip3 install newspaper3k
 RUN pip3 install mysql-connector-python
 RUN pip3 install nltk
+RUN pip3 install newsapi-python
 RUN pip3 install textblob
 RUN pip3 install flask
 RUN pip3 install flask-restful

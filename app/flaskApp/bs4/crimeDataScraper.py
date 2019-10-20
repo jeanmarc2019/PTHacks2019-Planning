@@ -23,14 +23,27 @@ for a in states.find_all("a", href = True):
         soup2 = bs.BeautifulSoup(sauce2, 'lxml')
         crimeData = soup2.find("div", {"class": "table-responsive"})
         years = [2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017]
+        crimeTypes = ["Murder"]
         count = 0
 
         while count < 8:
             index = 0
             crime = crimeData.find("tr", {"class": "g"+str(count)})
             for crimes in crime.find_all("small"):
-                index = index + 1
-                print("Crime Set #" + str(count) + " Index #" + str(index)+ ": " + str(crimes))
+                try:
+                    index = index + 1
+                    ##print("Crime Set #" + str(count) + " Index #" + str(index)+ ": " + str(crimes))
+                    placeholderCrimeData = str(crimes).split("(")
+                    s = ""
+                    ##print(str(placeholderCrimeData))
+                    crimeDataNum = str(placeholderCrimeData[1])
+                    ##print(crimeDataNum)
+                    placeholderCrimeData = crimeDataNum.split(")")
+                    crimeDataNum = str(placeholderCrimeData[0])
+                    print(crimeDataNum)
+                except:
+                    print(0.0)
+                    pass
             count = count + 1
         
 

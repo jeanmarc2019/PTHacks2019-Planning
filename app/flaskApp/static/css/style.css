@@ -1,3 +1,11 @@
+.dialog {
+  display: none;
+}
+.article {
+  overflow-y: scroll;
+  max-height: 55rem;
+}
+
 body {
   padding-top: 50px;
 }
@@ -37,7 +45,8 @@ body {
   background: #002942;
 }
 .demo__content {
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   position: relative;
   height: 48rem;
   padding-top: 4.5rem;
@@ -45,6 +54,9 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 .demo__card-cont {
   position: relative;
@@ -90,8 +102,7 @@ body {
   z-index: 1;
 }
 .demo__card__top {
-  height: 20.5rem;
-  padding-top: 4rem;
+  height: 13.5rem;
 }
 .demo__card__top.purple {
   background: #7132B9;
@@ -113,13 +124,11 @@ body {
 }
 .demo__card__img {
   overflow: hidden;
-  width: 10rem;
-  height: 10rem;
   margin: 0 auto 1.5rem;
-  border-radius: 50%;
   border: 0.5rem solid #ffffff;
   background-image: url("//s3-us-west-2.amazonaws.com/s.cdpn.io/142996/profile/profile-512_5.jpg");
   background-size: cover;
+  max-height: 16rem;
 }
 .demo__card__name {
   text-align: center;
@@ -128,10 +137,15 @@ body {
   color: #fff;
 }
 .demo__card__btm {
-  height: 27.5rem;
+  height: 50.5rem;
   background: #FFFFFF;
 }
 .demo__card__we {
+  text-align: center;
+  font-size: 2.2rem;
+  line-height: 11.5rem;
+}
+.demo__card__open_dialog {
   text-align: center;
   font-size: 2.2rem;
   line-height: 11.5rem;

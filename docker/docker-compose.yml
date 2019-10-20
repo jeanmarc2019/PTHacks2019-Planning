@@ -13,18 +13,18 @@ services:
     volumes:
       - ../app:/var/www/html/
 
-  postgres:
-    image: postgres:latest
-    networks:
-      code-network:
-        aliases:
-          - postgres
+  mysql:
+    build:
+      context: ..
+      dockerfile: ./docker/mysql/Dockerfile
     restart: always
     environment:
-      POSTGRES_PASSWORD: tester
-      POSTGRES_USERNAME: tester
+      MYSQL_DATABASE: app
+      MYSQL_ROOT_PASSWORD: tester
+      MYSQL_PASSWORD: tester
+      MYSQL_USERNAME: root
     ports:
-      - 3308:3308
+      - 3306:3306
 #
 #volumes:
 #  ..:
